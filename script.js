@@ -108,7 +108,7 @@ function createNotePad(color) {
               </div>
               <button><i class="ri-delete-bin-line"></i></button>
             </div>
-            <textarea class="notes__input"></textarea>`;
+            <textarea spellcheck="false" class="notes__input"></textarea>`;
   notesContainer.append(newInputBox);
   newInputBox.style.backgroundColor = color;
   changeParentColor();

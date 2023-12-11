@@ -138,6 +138,7 @@ html, body{
   flex-direction: column;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
 }
 .input__box textarea{
   width: 280px;
