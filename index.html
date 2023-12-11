@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes-Taking-App</title>
+
+    <!--==========-- REMIX-ICON --==========-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.7.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <!--==========-- STYLE-SHEET --==========-->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main__container">
+      <div class="left">
+        <div class="add__note-container">
+          <button class="add__note-button"><i class="ri-add-line"></i></button>
+          <div class="add__note-color">
+            <div class="color color-1"></div>
+            <div class="color color-2"></div>
+            <div class="color color-3"></div>
+            <div class="color color-4"></div>
+            <div class="color color-5"></div>
+            <div class="color color-6"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note__container">
+        <div class="added__notes">
+          <div class="input__box">
+            <div class="button-section">
+              <div class="color-section">
+                <div class="color color-1"></div>
+                <div class="color color-2"></div>
+                <div class="color color-3"></div>
+                <div class="color color-4"></div>
+                <div class="color color-5"></div>
+                <div class="color color-6"></div>
+              </div>
+              <button><i class="ri-delete-bin-line"></i></button>
+            </div>
+            <textarea class="notes__input"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--==========-- JAVA-SCRIPT --==========-->
+    <script src="script.js"></script>
+  </body>
+</html>
