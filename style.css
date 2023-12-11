@@ -7,7 +7,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: poppins;
+  font-family: gilroy;
 }
 ::-webkit-scrollbar{
   display: none;
@@ -16,6 +16,7 @@
 html, body{
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
 .main__container{
@@ -24,6 +25,7 @@ html, body{
   position: relative;
   background-color: #222;
   display: flex;
+  position: relative;
 }
 
 .left{
@@ -138,7 +140,7 @@ html, body{
   flex-direction: column;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 .input__box textarea{
   width: 280px;
@@ -150,6 +152,7 @@ html, body{
   font-size: 20px;
   margin: 5px 10px 0 10px;
   background: transparent;
+  font-weight: 400;
 }
 .notes__input::-webkit-scrollbar{
   display: none;
@@ -161,11 +164,11 @@ html, body{
   background-color: #222;
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
 .button-section button{
-  position: absolute;
   background: transparent;
   color: #fff;
   border: none;
@@ -174,21 +177,33 @@ html, body{
   font-size: 20px;
   transition: all 0.4s ease;
   filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5));
-  margin-right: 15px;
 }
 .button-section button:active{
   transform: scale(0.8);
 }
 
 .color-section{
-  width: 100%;
+  width: max-content;
   height: 100%;
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-left: 10px;
 }
 .color-section .color{
   height: 15px;
   width: 15px;
+}
+
+.fullscreen__mode{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  border-radius: 0;
+  backdrop-filter: blur(10px);
+}
+.fullscreen__mode textarea{
+  width: 100%;
 }
