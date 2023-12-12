@@ -1,7 +1,8 @@
 const addBtn = document.querySelector(".add__note-button");
 const addContainer = document.querySelector(".add__note-container");
 const colorBtn = document.querySelectorAll(".add__note-color .color");
-const notesContainer = document.querySelector(".added__notes");
+const EachNotesContainer = document.querySelector(".added__notes");
+const notesContainer = document.querySelector(".note__container");
 
 // Function to animate the add buttons of notes...
 let addClick = 0;
@@ -30,6 +31,17 @@ function addNote() {
 }
 addBtn.addEventListener("click", function () {
   addNote();
+  notesContainer.addEventListener("click", function(){
+    if (window.innerWidth >= 950) {
+      addContainer.style.height = "60px";
+      addBtn.style.rotate = "-0deg";
+      addClick = 0;
+    } else {
+      addContainer.style.width = "60px";
+      addBtn.style.rotate = "-0deg";
+      addClick = 0;
+    }
+  })
 });
 
 // Function to add color to the notes
@@ -155,13 +167,13 @@ function createNotePad(color, text = "") {
               <button class="fullscreen__btn"><i class="ri-fullscreen-line"></i></button>
             </div>
             <textarea spellcheck="false" class="notes__input">${text}</textarea>`;
-  notesContainer.append(newInputBox);
+  EachNotesContainer.append(newInputBox);
   newInputBox.style.backgroundColor = color;
 
   const newTextArea = newInputBox.querySelector("textarea");
   newTextArea.focus();
 
-  notesContainer.querySelectorAll(".notes__input").forEach(function (e) {
+  EachNotesContainer.querySelectorAll(".notes__input").forEach(function (e) {
     e.addEventListener("input", function () {
       saveNote();
     });
