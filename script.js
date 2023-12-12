@@ -6,14 +6,26 @@ const notesContainer = document.querySelector(".added__notes");
 // Function to animate the add buttons of notes...
 let addClick = 0;
 function addNote() {
-  if (addClick === 0) {
-    addContainer.style.height = "600px";
-    addBtn.style.rotate = "135deg";
-    addClick = 1;
+  if (window.innerWidth >= 950) {
+    if (addClick === 0) {
+      addContainer.style.height = "600px";
+      addBtn.style.rotate = "135deg";
+      addClick = 1;
+    } else {
+      addContainer.style.height = "60px";
+      addBtn.style.rotate = "-0deg";
+      addClick = 0;
+    }
   } else {
-    addContainer.style.height = "80px";
-    addBtn.style.rotate = "-0deg";
-    addClick = 0;
+    if (addClick === 0) {
+      addContainer.style.width = "600px";
+      addBtn.style.rotate = "135deg";
+      addClick = 1;
+    } else {
+      addContainer.style.width = "60px";
+      addBtn.style.rotate = "-0deg";
+      addClick = 0;
+    }
   }
 }
 addBtn.addEventListener("click", function () {
@@ -25,9 +37,15 @@ function addColor() {
   colorBtn.forEach(function (e) {
     e.addEventListener("click", function () {
       // To refresh the size of the color container...
-      addContainer.style.height = "80px";
-      addBtn.style.rotate = "-0deg";
-      addClick = 0;
+      if (window.innerWidth >= 950) {
+        addContainer.style.height = "60px";
+        addBtn.style.rotate = "-0deg";
+        addClick = 0;
+      } else {
+        addContainer.style.width = "60px";
+        addBtn.style.rotate = "-0deg";
+        addClick = 0;
+      }
 
       // To get the color of the button...
       const computedStyle = getComputedStyle(e);
@@ -180,7 +198,7 @@ function saveNote() {
 
   // Check if both lsTextNotes and lsBgColor are defined and have the same length
   for (let i = 0; i < lsTextNotes.length; i++) {
-    if(lsTextNotes[i] !== ''){
+    if (lsTextNotes[i] !== "") {
       createNotePad(lsBgColor[i], lsTextNotes[i]);
     }
   }

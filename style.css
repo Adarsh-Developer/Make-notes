@@ -45,26 +45,26 @@ body {
 
 .add__note-container {
   width: 100px;
-  height: 80px;
+  height: 60px;
+  padding-top: 5px;
   position: absolute;
   top: 50px;
-  left: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   transition: all 0.5s ease;
+  /* background: red; */
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  gap: 30px;
 }
 
 .add__note-button {
-  position: absolute;
-  width: 50px;
-  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
   background-color: #000;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 40px;
   border: none;
   outline: none;
@@ -78,14 +78,14 @@ body {
 }
 
 .add__note-color {
-  position: absolute;
-  display: grid;
-  grid-template-columns: repeat(1, 20px);
-  row-gap: 30px;
-  top: 80px;
+  display: flex;
+  z-index: 99;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .color {
+  width: 20px;
   height: 20px;
   border-radius: 50%;
   cursor: pointer;
@@ -203,22 +203,45 @@ body {
   left: 0;
   border-radius: 0;
   backdrop-filter: blur(10px);
+  z-index: 999;
 }
 .fullscreen__mode textarea {
   width: 100%;
 }
 
-@media (max-width: 1280px) {
-  .added__notes {
-    grid-template-columns: 1fr 300px;
-    justify-content: center;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0;
-    padding: 0;
+@media (max-width: 950px) {
+  .left{
+    width: 100%;
+    height: 150px;
+    z-index: 99;
   }
-}
-
-@media (max-width: 650px) {
-  
+  .add__note-container{
+    width: 65px;
+    height: 80px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    top: 50%;
+    left: 30px;
+    transform: translateY(-50%);
+    padding-top: 0;
+    padding-left: 5px;
+    overflow: hidden;
+  }
+  .add__note-button{
+    min-height: 50px;
+    min-width: 50px;
+  }
+  .add__note-color{
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+  }
+  .note__container{
+    padding: 200px 30px 70px 30px;
+  }
+  .added__notes{
+    width: 100%;
+    height: 100%;
+  }
 }
