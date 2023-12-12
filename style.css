@@ -63,10 +63,6 @@ body {
 .add__note-button {
   min-width: 50px;
   min-height: 50px;
-  max-width: 50px;
-  max-height: 50px;
-  text-align: center;
-  line-height: 50px;
   background-color: #000;
   border-radius: 50%;
   font-size: 40px;
@@ -233,10 +229,6 @@ body {
   .add__note-button {
     min-height: 40px;
     min-height: 40px;
-    max-width: 40px;
-    max-width: 40px;
-    text-align: center;
-    line-height: 40px;
   }
   .add__note-color {
     justify-content: start;
@@ -255,12 +247,18 @@ body {
 @media (max-width: 360px) {
   .input__box {
     max-width: 300px;
+    min-width: 200px;
+    width: 100%;
   }
   .input__box textarea {
     max-width: 300px;
+    min-width: 200px;
+    width: 100%;
   }
   .button-section {
     max-width: 300px;
+    min-width: 200px;
+    width: 100%;
     padding: 0 10px;
   }
 }
