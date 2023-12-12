@@ -84,9 +84,8 @@ function deleteInput() {
     e.addEventListener("click", function () {
       const parent = e.parentNode;
       const grandParent = parent.parentNode;
-      console.log(grandParent);
-
-      notesContainer.removeChild(grandParent);
+      grandParent.remove()
+      saveNote()
     });
   });
 }
@@ -94,7 +93,9 @@ deleteInput();
 
 // Function to fullscreen the note...
 function fullscreen() {
-  const fullscreenBtn = document.querySelectorAll(".button-section .fullscreen__btn");
+  const fullscreenBtn = document.querySelectorAll(
+    ".button-section .fullscreen__btn"
+  );
   fullscreenBtn.forEach(function (e) {
     let numFullScreen = 0;
     e.addEventListener("click", function () {
@@ -102,22 +103,22 @@ function fullscreen() {
         const parent = e.parentNode;
         const grandParent = parent.parentNode;
         grandParent.classList.add("fullscreen__mode");
-        e.innerHTML = `<i class="ri-fullscreen-exit-line"></i>`
+        e.innerHTML = `<i class="ri-fullscreen-exit-line"></i>`;
         numFullScreen = 1;
       } else {
         const parent = e.parentNode;
         const grandParent = parent.parentNode;
         grandParent.classList.remove("fullscreen__mode");
-        e.innerHTML = `<i class="ri-fullscreen-line">`
+        e.innerHTML = `<i class="ri-fullscreen-line">`;
         numFullScreen = 0;
       }
     });
   });
 }
-fullscreen()
+fullscreen();
 
 // Function to create the new notePad...
-function createNotePad(color) {
+function createNotePad(color, text='') {
   let newInputBox = document.createElement("div");
   newInputBox.classList.add("input__box");
   newInputBox.innerHTML = `
@@ -133,9 +134,16 @@ function createNotePad(color) {
               </div>
               <button class="fullscreen__btn"><i class="ri-fullscreen-line"></i></button>
             </div>
-            <textarea spellcheck="false" class="notes__input"></textarea>`;
+            <textarea spellcheck="false" class="notes__input">${text}</textarea>`;
   notesContainer.append(newInputBox);
   newInputBox.style.backgroundColor = color;
+
+  notesContainer.querySelectorAll(".notes__input").forEach(function (e) {
+    e.addEventListener("input", function () {
+      saveNote();
+    });
+  });
+
   changeParentColor();
   deleteInput();
   fullscreen();
@@ -144,3 +152,20 @@ function createNotePad(color) {
 addBtn.addEventListener("click", function () {
   addNote();
 });
+
+// Functions to save the data of textarea...
+function saveNote() {
+  const textNotes = document.querySelectorAll(".added__notes textarea");
+  const data = [];
+  textNotes.forEach((text) => {
+    data.push(text.value);
+  });
+  localStorage.setItem("textNotes", JSON.stringify(data));
+}
+
+(function () {
+  const lstextNotes = JSON.parse(localStorage.getItem("textNotes"));
+  lstextNotes.forEach(function (lstextNote) {
+    createNotePad('', lstextNote);
+  });
+})();
