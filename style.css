@@ -254,13 +254,14 @@ body {
 
 @media (max-width: 360px) {
   .button-section {
-    padding: 0 10px;
+    padding: 10px 15px;
   }
   .note__container {
     padding: 115px 15px 70px 15px;
   }
 }
-@media (max-width: 300px) {
+
+@media (max-width: 330px) {
   .input__box {
     width: 90vw;
     margin: auto;
@@ -271,5 +272,11 @@ body {
   }
   .added__notes {
     grid-template-columns: repeat(1, 100vw);
+  }
+  .note__container{
+    padding: 115px 0 70px 0;
+  }
+  .add__note-color{
+    gap: 10px;
   }
 }
