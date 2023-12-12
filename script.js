@@ -2,8 +2,6 @@ const addBtn = document.querySelector(".add__note-button");
 const addContainer = document.querySelector(".add__note-container");
 const colorBtn = document.querySelectorAll(".add__note-color .color");
 const notesContainer = document.querySelector(".added__notes");
-const inputBox = document.querySelector(".input__box");
-const mainContainer = document.querySelector(".main__container");
 
 // Function to animate the add buttons of notes...
 let addClick = 0;
@@ -18,6 +16,9 @@ function addNote() {
     addClick = 0;
   }
 }
+addBtn.addEventListener("click", function () {
+  addNote();
+});
 
 // Function to add color to the notes
 function addColor() {
@@ -72,6 +73,7 @@ function changeParentColor() {
         alpha +
         ")";
       parentGrandParent.style.backgroundColor = rgbColor;
+      saveNote();
     });
   });
 }
@@ -84,8 +86,8 @@ function deleteInput() {
     e.addEventListener("click", function () {
       const parent = e.parentNode;
       const grandParent = parent.parentNode;
-      grandParent.remove()
-      saveNote()
+      grandParent.remove();
+      saveNote();
     });
   });
 }
@@ -118,7 +120,7 @@ function fullscreen() {
 fullscreen();
 
 // Function to create the new notePad...
-function createNotePad(color, text='') {
+function createNotePad(color, text = "") {
   let newInputBox = document.createElement("div");
   newInputBox.classList.add("input__box");
   newInputBox.innerHTML = `
@@ -149,23 +151,37 @@ function createNotePad(color, text='') {
   fullscreen();
 }
 
-addBtn.addEventListener("click", function () {
-  addNote();
-});
-
 // Functions to save the data of textarea...
 function saveNote() {
+  // to save text to the local storage...
   const textNotes = document.querySelectorAll(".added__notes textarea");
   const data = [];
   textNotes.forEach((text) => {
     data.push(text.value);
   });
   localStorage.setItem("textNotes", JSON.stringify(data));
+
+  /***********************************************************************/
+
+  // to save bg color to the local storage...
+  const inputBox = document.querySelectorAll(".input__box");
+  const bgData = [];
+  inputBox.forEach(function (e) {
+    const computedStyle = getComputedStyle(e);
+    const bgColor = computedStyle.backgroundColor;
+    bgData.push(bgColor);
+  });
+  localStorage.setItem("backgroundColor", JSON.stringify(bgData));
 }
 
 (function () {
-  const lstextNotes = JSON.parse(localStorage.getItem("textNotes"));
-  lstextNotes.forEach(function (lstextNote) {
-    createNotePad('', lstextNote);
-  });
+  const lsTextNotes = JSON.parse(localStorage.getItem("textNotes"));
+  const lsBgColor = JSON.parse(localStorage.getItem("backgroundColor"));
+
+  // Check if both lsTextNotes and lsBgColor are defined and have the same length
+  for (let i = 0; i < lsTextNotes.length; i++) {
+    if(lsTextNotes[i] !== ''){
+      createNotePad(lsBgColor[i], lsTextNotes[i]);
+    }
+  }
 })();
