@@ -7,23 +7,24 @@
   src: url(./Gilroy-Regular.woff2);
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: gilroy;
 }
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   display: none;
 }
 
-html, body{
+html,
+body {
   width: 100%;
   height: 100%;
   position: relative;
 }
 
-.main__container{
+.main__container {
   width: 100%;
   height: 100%;
   position: relative;
@@ -32,7 +33,7 @@ html, body{
   position: relative;
 }
 
-.left{
+.left {
   position: fixed;
   left: 0;
   top: 0;
@@ -42,7 +43,7 @@ html, body{
   background: #222;
 }
 
-.add__note-container{
+.add__note-container {
   width: 100px;
   height: 80px;
   position: absolute;
@@ -55,7 +56,7 @@ html, body{
   overflow: hidden;
 }
 
-.add__note-button{
+.add__note-button {
   position: absolute;
   width: 50px;
   height: 50px;
@@ -72,11 +73,11 @@ html, body{
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
   transition: all 0.4s ease;
 }
-.add__note-button:active{
+.add__note-button:active {
   transform: scale(0.9);
 }
 
-.add__note-color{
+.add__note-color {
   position: absolute;
   display: grid;
   grid-template-columns: repeat(1, 20px);
@@ -84,57 +85,53 @@ html, body{
   top: 80px;
 }
 
-.color{
+.color {
   height: 20px;
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.3s ease;
 }
-.color:active{
+.color:active {
   transform: scale(0.9);
 }
-.color-1{
+.color-1 {
   background-color: #fff;
 }
-.color-2{
+.color-2 {
   background-color: #bde0fe;
 }
-.color-3{
+.color-3 {
   background-color: #ffc8dd;
 }
-.color-4{
+.color-4 {
   background-color: #cdb4db;
 }
-.color-5{
+.color-5 {
   background-color: #fcbf49;
 }
-.color-6{
+.color-6 {
   background-color: #dad7cd;
 }
 
-
-
-
-
 /* Note Section Starts From Here */
-.note__container{
+.note__container {
   background-color: #787575;
-  width: 100%;
+  min-width: 100%;
   min-height: 100%;
   height: max-content;
-  padding: 70px 70px 0 250px;
+  padding: 70px 70px 70px 250px;
 }
 
-.added__notes{
-  width: 100%;
+.added__notes {
+  width: calc(100%-150px);
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 300px);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 30px;
 }
 
-.input__box{
-  width: 300px;
+.input__box {
+  min-height: 300px;
   min-height: 240px;
   max-height: 100%;
   background-color: rgb(255, 255, 255, 0.8);
@@ -145,7 +142,7 @@ html, body{
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
 }
-.input__box textarea{
+.input__box textarea {
   width: 280px;
   min-height: 190px;
   height: 100%;
@@ -157,11 +154,11 @@ html, body{
   background: transparent;
   font-weight: 400;
 }
-.notes__input::-webkit-scrollbar{
+.notes__input::-webkit-scrollbar {
   display: none;
 }
 
-.button-section{
+.button-section {
   width: 100%;
   height: 40px;
   background-color: #222;
@@ -171,7 +168,7 @@ html, body{
   padding: 0 20px;
 }
 
-.button-section button{
+.button-section button {
   background: transparent;
   color: #fff;
   border: none;
@@ -181,23 +178,23 @@ html, body{
   transition: all 0.4s ease;
   filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5));
 }
-.button-section button:active{
+.button-section button:active {
   transform: scale(0.8);
 }
 
-.color-section{
+.color-section {
   width: max-content;
   height: 100%;
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.color-section .color{
+.color-section .color {
   height: 15px;
   width: 15px;
 }
 
-.fullscreen__mode{
+.fullscreen__mode {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -207,6 +204,21 @@ html, body{
   border-radius: 0;
   backdrop-filter: blur(10px);
 }
-.fullscreen__mode textarea{
+.fullscreen__mode textarea {
   width: 100%;
+}
+
+@media (max-width: 1280px) {
+  .added__notes {
+    grid-template-columns: 1fr 300px;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media (max-width: 650px) {
+  
 }
