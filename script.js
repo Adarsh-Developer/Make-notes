@@ -158,10 +158,8 @@ function createNotePad(color, text = "") {
   notesContainer.append(newInputBox);
   newInputBox.style.backgroundColor = color;
 
-  if (window.innerWidth >= 950) {
-    const newTextArea = newInputBox.querySelector("textarea");
-    newTextArea.focus();
-  }
+  const newTextArea = newInputBox.querySelector("textarea");
+  newTextArea.focus();
 
   notesContainer.querySelectorAll(".notes__input").forEach(function (e) {
     e.addEventListener("input", function () {
